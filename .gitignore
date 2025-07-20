@@ -25,3 +25,4 @@ Thumbs.db
 *.log
 *.out
 *.synctex.gz
+.github/instructions/copilot-instructions.md
