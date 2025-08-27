@@ -1,6 +1,6 @@
 # LQG Volume Operator Spectral Analysis
 
-This repository contains scripts and tools for computing and analyzing the spectrum of the Loop Quantum Gravity (LQG) volume operator and its kernel (zero-volume) states.
+This repository contains scripts and tools for computing and analyzing the spectrum of the Loop Quantum Gravity (LQG) volume operator and its kernel (zero-volume) states. The computations and reported counts below reflect the sampling and parameter ranges used by the included scripts; they are not exhaustive proofs of global properties.
 
 **📖 [View the complete research documentation on GitHub Pages](https://arcticoder.github.io/lqg-volume-kernel-catalog/)**
 
@@ -35,9 +35,9 @@ pip install -r requirements.txt
 ```bash
 python scripts/analyze_zero_volume_states.py
 ```
-- Scans spin configurations (j=0.5 to 3.0).
-- Identifies trivial zero-volume states (J₁₂ ∩ J₃₄ = ∅).
-- Confirms no non-trivial zero-volume states in the tested range.
+- Scans a specified spin-configuration range (default j=0.5 to 3.0). Adjust the script arguments to explore other ranges.
+- Identifies trivial zero-volume states under the tested sampling and criteria (J₁₂ ∩ J₃₄ = ∅ where applicable).
+- Reports that no non-trivial zero-volume states were found within the tested range and parameter sweep; this is an empirical result for the scanned configurations (not a mathematical proof of absence).
 - Outputs summary statistics and generates:
   - `results/kernel_dimension_distribution.png`
   - `results/zero_volume_catalog.json`
@@ -66,17 +66,23 @@ python scripts/compute_volume_spectrum.py
 
 ## Results
 
-- **Total configurations scanned**: 1,296 (j_i ∈ {0.5, 1.0, …, 3.0})
-- **Trivial zero-volume states**: 60 (4.6%)
-- **Non-trivial zero-volume states**: 0 (0.0%)
-- **Full-rank matrices (non-zero volume)**: 674 (52.0%)
-- **Other kernel matrices (not zero-volume)**: 562 (43.4%)
+- **Total configurations scanned (example run)**: 1,296 (default j_i ∈ {0.5, 1.0, …, 3.0}) — changeable via script arguments.
+- **Trivial zero-volume states (example run)**: 60 (≈4.6%) — fraction observed in the example sweep; varies with sampling.
+- **Non-trivial zero-volume states (example run)**: 0 observed in the example sweep (empirical result in the tested parameter range).
+- **Full-rank matrices (example run)**: 674 (≈52.0%) — reported for the example sweep.
+- **Other kernel matrices (example run)**: 562 (≈43.4%) — reported for the example sweep.
 
-All trivial zero-volume cases satisfy the Diophantine condition:
+All trivial zero-volume cases in the example sweep satisfy the Diophantine condition for the tested configurations:
 
 ```
 max(|j₁−j₂|, |j₃−j₄|) > min(j₁+j₂, j₃+j₄)
 ```
+
+## Scope, Validation & Limitations
+
+- Scope: example numerical scans of the LQG volume operator kernel for 4-valent nodes within user-configurable spin ranges. Results are empirical and dependent on the sampled range and discretization.
+- Validation: run `python scripts/analyze_zero_volume_states.py --help` to see runtime options. To reproduce example results, run the script with the default parameters and attach the generated `results/` artifacts.
+- Limitations: the scripts perform finite, discrete scans. Absence of a configuration in the sampled set does not constitute a mathematical proof of absence. For broader claims, increase sampling density, include symbolic checks where possible, and provide reproducibility artifacts.
 
 ## Directory Structure
 
