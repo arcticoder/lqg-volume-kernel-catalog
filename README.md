@@ -66,9 +66,9 @@ python scripts/compute_volume_spectrum.py
 
 ## Results
 
-- **Total configurations scanned (example run)**: 1,296 (default j_i ∈ {0.5, 1.0, …, 3.0}) — changeable via script arguments.
-- **Trivial zero-volume states (example run)**: 60 (≈4.6%) — fraction observed in the example sweep; varies with sampling.
-- **Non-trivial zero-volume states (example run)**: 0 observed in the example sweep (empirical result in the tested parameter range).
+- **Total configurations scanned (example run)**: 1,296 (default j_i ∈ {0.5, 1.0, …, 3.0}) — changeable via script arguments. These counts reflect the example run's sampling choices and are not exhaustive.
+- **Trivial zero-volume states (example run)**: 60 (≈4.6%) — fraction observed in the example sweep; this varies with sampling and parameterization. When reporting these counts, publish the raw outputs and sampling metadata.
+- **Non-trivial zero-volume states (example run)**: 0 observed in the example sweep (empirical result within the tested parameter range). Absence in a finite sampled set is not a mathematical proof of absence; for broader claims provide denser sampling and analytic checks.
 - **Full-rank matrices (example run)**: 674 (≈52.0%) — reported for the example sweep.
 - **Other kernel matrices (example run)**: 562 (≈43.4%) — reported for the example sweep.
 
@@ -80,9 +80,9 @@ max(|j₁−j₂|, |j₃−j₄|) > min(j₁+j₂, j₃+j₄)
 
 ## Scope, Validation & Limitations
 
-- Scope: example numerical scans of the LQG volume operator kernel for 4-valent nodes within user-configurable spin ranges. Results are empirical and dependent on the sampled range and discretization.
-- Validation: run `python scripts/analyze_zero_volume_states.py --help` to see runtime options. To reproduce example results, run the script with the default parameters and attach the generated `results/` artifacts.
-- Limitations: the scripts perform finite, discrete scans. Absence of a configuration in the sampled set does not constitute a mathematical proof of absence. For broader claims, increase sampling density, include symbolic checks where possible, and provide reproducibility artifacts.
+- Scope: example numerical scans of the LQG volume operator kernel for 4-valent nodes within user-configurable spin ranges. Results are empirical and depend on the sampled range and discretization; treat summary counts as illustrative of the tested parameter set.
+- Validation: run `python scripts/analyze_zero_volume_states.py --help` to see runtime options. To reproduce example results, run the script with the default parameters and attach the generated `results/` artifacts (JSON/CSV + plotting scripts) and the runtime metadata (seed, environment, args).
+- Limitations: the scripts perform finite, discrete scans. Absence of a configuration in the sampled set does not constitute a mathematical proof of absence. For stronger claims, increase sampling density, include symbolic or analytic checks where possible, and publish sensitivity analyses demonstrating robustness to sampling choices.
 
 ## Directory Structure
 
